@@ -10,19 +10,18 @@
 </head>
 <body>
 
-    <form action="
-    ">
+    <form name="bookForm" >
 <label for="title">Title</label>
-<input type="text" id="title">
+<input type="text" id="title" name="title">
 <label for="author">Author</label>
-<input type="text" id="author">
+<input type="text" id="author" name="author">
 <label for="pages">Pages</label>
-<input type="number" id="pages">
+<input type="number" id="pages" name="pages">
 <label for="read">Read</label>
 <input type="radio" id="read" name="readState">
 <label for="read">Unread</label>
 <input type="radio" id="read" name="readState">
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" OnClick="createBook()">
 
 
 

@@ -11,6 +11,11 @@ function Book(title,author,pages,read) {
 
     // the constructor...
   }
+
+  function createBook(){
+    new Book(bookForm.title.value,bookForm.author.value,bookForm.pages.value,bookForm.title.read)
+    console.log("Hello")
+  }
   
   function addBookToLibrary(i) {
     const newBook = document.createElement("div");
