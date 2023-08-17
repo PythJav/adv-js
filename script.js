@@ -13,38 +13,138 @@ function Book(title,author,pages,read) {
   }
 
   function createBook(){
-    new Book(bookForm.title.value,bookForm.author.value,bookForm.pages.value,bookForm.title.read)
-    console.log("Hello")
+   let newBook= new Book(bookForm.title.value,bookForm.author.value,bookForm.pages.value,bookForm.readState.value)
+   myLibrary.push(newBook);
+   addBook();
   }
   
-  function addBookToLibrary(i) {
-    const newBook = document.createElement("div");
+  Book.prototype.toggleRead=function(){
+   this.read=!this.read;
 
-    const title = document.getElementById("title").value;
+   
+
+
+  }
+
+  function toggleRead(index){
+  myLibrary[index].toggleRead();
+  addBook();
+  }
+
+function addBook(){
+  bookCon.innerHTML="";
+  for(let i= 0; i <myLibrary.length;i++){
+    let book= myLibrary[i];
+    const newBook = document.createElement("div");
+ 
 
     const newTitle = document.createElement("div");
-    newTitle.textContent= `Title: ${title}`
-
+    newTitle.textContent= `Title: ${book.title}`;
 
     const newAuthor = document.createElement("div");
-    newAuthor.textContent= `Author: ${title}`
+    newAuthor.textContent= `Author: ${book.author}`;
+
     const newPages = document.createElement("div");
-    newPages.textContent= `Pages: ${title}`
+    newPages.textContent= `Pages: ${book.pages}`;
+    const newSwitch =document.createElement('button');
+    newSwitch.setAttribute("onclick",`toggleRead(${i})`)
+    newSwitch.textContent=`Switch Read`
+
     const newRead = document.createElement("div");
+    // newRead,setAttribute("read-status",`book.read?"Read":"Not Read Yet"`);
+    newRead.textContent= `Read: ${book.read?"Read":"Not Read Yet"}` ;
+
+    const newDel = document.createElement("button");
+    newDel.classList.add("delBut");
+    newDel.setAttribute("onclick",`removeBook(${i})`)
+    newDel.textContent=`Remove Book`;
+
 
     newBook.appendChild(newTitle);
     newBook.appendChild(newAuthor);
     newBook.appendChild(newPages);
+    newBook.appendChild(newSwitch);
+
+
     newBook.appendChild(newRead);
+    newBook.appendChild(newDel);
+
     bookCon.appendChild(newBook);
-
-
   }
+}
 
+
+  // function addBookToLibrary(i) {
+  //   const newBook = document.createElement("div");
+ 
+
+  //   const newTitle = document.createElement("div");
+  //   newTitle.textContent= `Title: ${i.title}`;
+
+  //   const newAuthor = document.createElement("div");
+  //   newAuthor.textContent= `Author: ${i.author}`;
+
+  //   const newPages = document.createElement("div");
+  //   newPages.textContent= `Pages: ${i.pages}`;
+
+  //   const newRead = document.createElement("div");
+  //   newRead.textContent= `Read: ${i.read}`;
+
+  //   const newDel = document.createElement("button");
+  //   newDel.classList.add("delBut");
+  //   newDel.setAttribute("onclick","return this.parentNode.remove()")
+  //   newDel.textContent=`Remove Book`;
+
+
+  //   newBook.appendChild(newTitle);
+  //   newBook.appendChild(newAuthor);
+  //   newBook.appendChild(newPages);
+  //   newBook.appendChild(newRead);
+  //   newBook.appendChild(newDel);
+
+  //   bookCon.appendChild(newBook);
+
+
+  // }
+function showForm(){
+  document.getElementById("bookForm").style.display="";
+}
 // function changeState{
 
 
 // }
 
 chaidef = new Book ("Funny","Me","10","read");
-addBookToLibrary(chaidef);
+addBook(chaidef);
+
+let delEach= document.querySelectorAll(".delBut");
+
+// delEach.forEach((item)=>{
+//   item.addEventListener("click",function(e){
+//   e.currentTarget.parentNode.remove();
+//   console.log("H1");
+
+
+
+// })
+  
+//   // myLibrary.forEach(addBookToLibrary);
+  
+// });
+
+
+
+function removeBook(index){
+  myLibrary.splice(index,1);
+  addBook();
+
+}
+
+document.getElementById("bookForm").addEventListener("submit",function(event){
+  event.preventDefault();
+  createBook();
+  // document.getElementById("bookForm").style.display="none";
+
+
+  
+})

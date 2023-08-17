@@ -9,8 +9,8 @@
     <title>Document</title>
 </head>
 <body>
-
-    <form name="bookForm" >
+<button id="newBook" onclick="showForm()">New Book</button>
+    <form name="bookForm" id="bookForm" style="display: none">
 <label for="title">Title</label>
 <input type="text" id="title" name="title">
 <label for="author">Author</label>
@@ -18,10 +18,10 @@
 <label for="pages">Pages</label>
 <input type="number" id="pages" name="pages">
 <label for="read">Read</label>
-<input type="radio" id="read" name="readState">
+<input type="radio" id="readState" name="readState" value="read">
 <label for="read">Unread</label>
-<input type="radio" id="read" name="readState">
-<input type="submit" value="Submit" OnClick="createBook()">
+<input type="radio" id="readState" name="readState" value="unread">
+<input type="submit" value="Submit" >
 
 
 
@@ -29,11 +29,11 @@
 
 <div class="bookList">
 <div class="defBook">
-<div class="bookTitle">Funny Haha</div>
+<!-- <div class="bookTitle">Funny Haha</div>
 <div class="bookAuthor">Me</div>
 <div class="bookPages">10</div>
 <div class="bookReadState">Read</div>
-<button onclick="changeState">Read/Unread</button>
+<button onclick="changeState">Read/Unread</button> -->
 
 
 

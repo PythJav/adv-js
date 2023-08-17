@@ -4,3 +4,8 @@ form{
     justify-items: center;
 
 }
+
+.bookList{
+    display:grid;
+    gap:50px;
+}
