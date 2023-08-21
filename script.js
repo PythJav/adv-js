@@ -3,33 +3,87 @@ const bookCon = document.querySelector(".bookList");
 
 const myLibrary = [];
 
-function Book(title,author,pages,read) {
+
+class Book{
+
+  constructor(title,author,pages,read) {
     this.title= title
     this.author=author
     this.pages = pages
     this.read = read
 
-    // the constructor...
+  }
+}
+
+class createBook {
+
+  constructor() {
+    this.Book= new Book();
+
   }
 
-  function createBook(){
-   let newBook= new Book(bookForm.title.value,bookForm.author.value,bookForm.pages.value,bookForm.readState.value)
+  createBook(){
+
+    newBook(){
+      let newBook= this.Book(bookForm.title.value,bookForm.author.value,bookForm.pages.value,bookForm.readState.value);
    myLibrary.push(newBook);
    addBook();
-  }
+    }
+
   
-  Book.prototype.toggleRead=function(){
-   this.read=!this.read;
+
+  
+  toggleRead(){
+    this.read=!this.read;
+  }
+
+  //toggleRead=function(){
+  //   this.read=!this.read;
+ 
+    
+ 
+ 
+  //  }
+ 
+   toggleRead(index){
+   myLibrary[index].toggleRead();
+   addBook();
+   }
+
+  }
+}
+
+  
+
+
+
+// function Book(title,author,pages,read) {
+//     this.title= title
+//     this.author=author
+//     this.pages = pages
+//     this.read = read
+
+//     // the constructor...
+//   }
+
+//   function createBook(){
+//    let newBook= new Book(bookForm.title.value,bookForm.author.value,bookForm.pages.value,bookForm.readState.value)
+//    myLibrary.push(newBook);
+//    addBook();
+//   }
+  
+//   Book.prototype.toggleRead=function(){
+//    this.read=!this.read;
 
    
 
 
-  }
+//   }
 
-  function toggleRead(index){
-  myLibrary[index].toggleRead();
-  addBook();
-  }
+//   function toggleRead(index){
+//   myLibrary[index].toggleRead();
+//   addBook();
+//   }
 
 function addBook(){
   bookCon.innerHTML="";
@@ -142,7 +196,7 @@ function removeBook(index){
 
 document.getElementById("bookForm").addEventListener("submit",function(event){
   event.preventDefault();
-  createBook();
+  new createBook();
   // document.getElementById("bookForm").style.display="none";
 
 
